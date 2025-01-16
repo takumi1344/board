@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}プロフィール画面{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>プロフィール確認画面</h2>
+                <p>ユーザー名:{{ user.username }}</p>
+                <p>メールアドレス:{{ user.email }}</p>
+                <a href="{% url 'index' %}" class="btn btn-primary">一覧に戻る</a>
+            </div>
+            
+        </div>
+        
+    </section>
+{% endblock %}

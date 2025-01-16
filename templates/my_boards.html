@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}自分の投稿一覧{% endblock %}
+
+{% block content %}
+    <section>
+        <h1 class="">自分の投稿一覧</h1>
+        <table class="table table-striped">
+            <colgroup>
+                <col style="width: 10%;">
+                <col style="width: 50%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+            </colgroup>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ユーザー名</th>
+                    <th scope="col">タイトル</th>
+                    <th scope="col">投稿日時</th>
+                    <th scope="col">更新日時</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for board in boards %}
+                <tr>
+                    <td scope="col">{{ board.user.username }}</td>
+                    <td scope="col"><a href="{% url 'show' pk=board.id %}">{{ board.title }}</td>
+                    <td scope="col">{{ board.created_at }}</td>
+                    <td scope="col">{{ board.updated_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'new' %}" class="btn btn-primary">新規投稿画面</a>
+        <a href="{% url 'index' %}" class="btn btn-primary">みんなの投稿一覧</a>
+
+    </section>
+    
+{% endblock %}

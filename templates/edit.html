@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ board.title }}の編集画面{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>--{{ board.title }}--編集画面</h2>
+        <form action="{% url 'update' pk=board.id %}" method="post" class="mt-4 mb-4">
+            {% csrf_token %}
+            <div class="col-sm-8">
+                <label for="id_title" class="form-label">タイトル</label>
+                <input type="text" name="title" id="id_title" class="form-control col-sm-8" value="{{ board.title }}" maxlength="39" required>
+            </div>
+            
+            <div class="col-sm-8 mb-3">
+                <label for="id_content" class="form-label">内容</label>
+                <textarea name="content" id="id_content" class="form-control col-sm-8"  rows="5" maxlength="500" required>{{ board.content }}</textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-success">更新する</button>
+            <a href="{% url 'index' %}" class="btn btn-primary">一覧に戻る</a>
+        </form>
+    
+    
+    </section>
+{% endblock %}

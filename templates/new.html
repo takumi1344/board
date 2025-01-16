@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}みんなの投稿一覧{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>新規投稿画面</h2>
+        <form action="{% url 'create' %}" method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="col-sm-8">
+                <label for="id_title" class="form-label">タイトル</label>
+                <input type="text" name="title" id="id_title" class="form-control col-sm-8" maxlength="39"  required>
+            </div>
+            
+            <div class="col-sm-8 mb-3">
+                <label for="id_content" class="form-label">内容</label>
+                <textarea name="content" id="id_content" class="form-control col-sm-8"  rows="5" maxlength="500" required></textarea>
+            </div>
+            
+            
+            <button type="submit" class="btn btn-success">投稿する</button>
+            <a href="{% url 'index' %}" class="btn btn-primary">一覧に戻る</a>
+        </form>
+    
+    
+    </section>
+{% endblock %}
